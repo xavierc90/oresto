@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Seaweed+Script&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
+  /* Ajoutez 'sans-serif' comme police de secours */
+}
+
+.handle {
+  padding: 10px;
+  background-color: #ccc;
+  border: 1px solid #333;
+  cursor: grab;
+  /* style de curseur pour indiquer qu'il est déplaçable */
+  text-align: center;
+}
+
+#droppable-zone {
+  background-color: #f8f9fa;
+  /* Couleur de fond légère */
+  border: 2px dashed #ccc;
+  /* Bordure en pointillé pour indiquer que c'est déposable */
+  padding: 20px;
+  /* Espacement interne */
+  min-height: 1000px;
+  /* Hauteur minimale pour que la zone soit visible même vide */
+}
+
+.dark #droppable-zone {
+  background-color: #0b2e50;
+  /* Couleur de fond légère */
+  border: 2px dashed #ccc;
+  /* Bordure en pointillé pour indiquer que c'est déposable */
+  padding: 20px;
+  /* Espacement interne */
+  min-height: 1000px;
+  /* Hauteur minimale pour que la zone soit visible même vide */
+}
+
+.invisible-radio {
+  appearance: none;
+  /* Pour éliminer tout style de système d'opération */
+  position: absolute;
+  /* Déplacez hors du flux normal, réduit l'espace */
+  opacity: 0;
+  /* Rend le bouton totalement transparent */
+  width: 0;
+  height: 0;
+}
+
+
+
+/* Alertes de notification */
+.success-message,
+.error-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  /* Ajout d'un padding à droite pour l'espace de la croix */
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, top 0.7s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.success-message {
+  background-color: #09a846;
+  color: white;
+}
+
+.error-message {
+  background-color: rgb(249, 79, 79);
+  color: white;
+}
+
+.show {
+  opacity: 1;
+  top: 20px;
+  /* Déplacement vers le bas pour l'effet d'apparition */
+}
+
+
+/* Couleur de sélection d'une forme de table */
+
+.filter-green {
+  filter: brightness(75%) saturate(40%) invert(0%) sepia(100%) saturate(100%) hue-rotate(100deg) brightness(100%) contrast(100%);
+}
+
+.main-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5rem;
+}
+
+.main-subtitle {
+  font-family: 'Seaweed Script', cursive;
+  font-size: 3.2rem;
+}
+
+.scrollable-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 360px;
+  overflow-x: hidden;
+}
+
+.status-circle {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.scrollable-list {
+  width: 100%;
+  height: 730px;
+  overflow-x: hidden;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  padding-bottom: 7px;
+  background-color: #fff;
+  /* Couleur de fond de l'en-tête, pour rester lisible lors du scroll */
+  z-index: 1;
+  /* Assure que l'en-tête est au-dessus du reste du contenu */
+}
+
+.reservation-list {
+  max-width: 100%;
+  max-height: 180px;
+  overflow-x: hidden;
+}
+
+.chart-container {
+  width: 260px;
+  /* Ajustez selon vos besoins */
+  height: 260px;
+  /* Ajustez selon vos besoins */
+}
+
+.reservationlist tr {
+  height: 30px;
+}
+
+
+/* Buttons */
+
+.btn-green {
+  background-color: #0a662d;
+  color: white;
+  font-weight: bold;
+  padding: 15px 10px;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  color: black;
+  font-weight: bold;
+  padding: 13px 10px;
+}
+
+.cover-login {
+  background-image: url('../public//img/cover-login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cover-contact {
+  background-image: url('../public/img/cover-contact.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cover-register {
+  background-image: url('../public//img/cover-register.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cover-restaurant {
+  background-image: url('../public//img/cover-restaurant.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1) 90%), url('/public/img/bg-home-2400.jpg') center center / cover no-repeat;
+  background-attachment: fixed;
+}
+
+input::placeholder {
+  font-weight: normal;
+  color: #7f7f7f;
+}
+
+/* Calendrier */
+
+.calendar {
+  overflow: hidden;
+  /* Pour éviter tout débordement */
+  padding: 0;
+}
+
+.calendar .caption {
+  display: flex;
+  justify-content: space-between;
+  /* Pour que les flèches et le mois soient alignés sur une seule ligne */
+  align-items: center;
+  /* Centrage vertical */
+  width: 100%;
+  padding: 0 10px;
+  /* Ajuster l'espacement si nécessaire */
+}
+
+.rdp-chevron {
+  color: #ffffff;
+}
+
+.rdp-weekday {
+  background-color: transparent
+}
+
+.rdp-focused {
+  background-color: #0a662d;
+  /* Example primary color */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.rdp-month_caption {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  white-space: nowrap;
+  /* Empêche le texte de passer à la ligne */
+  text-align: center;
+  /* Centrer le texte du mois */
+  flex-grow: 1;
+  /* Permet au mois de prendre l'espace central disponible */
+  font-size: 16px;
+}
+
+
+.rdp-root {
+  position: relative;
+}
+
+.rdp-root td {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+}
+
+.rdp-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.rdp-day_button {
+  font-size: 14px;
+}
+
+.rdp-button_previous,
+.rdp-button_next {
+  width: 24px;
+  /* Ajuste la taille des flèches pour être mieux proportionnée */
+  height: 24px;
+  display: flex;
+  align-items: center;
+  /* Centre verticalement le contenu de la flèche */
+  justify-content: center;
+  /* Centre horizontalement la flèche */
+  border: none;
+  /* Retirer les bordures pour plus de propreté */
+  background: none;
+  /* Retirer l'arrière-plan */
+}
+
+
+.bg-primary {
+  background-color: #3b82f6;
+  /* Example primary color */
+}
+
+.text-primary-foreground {
+  color: #ffffff;
+  /* Example text color */
+  font-weight: bold;
+}
+
+.dark .text-primary-foreground {
+  color: rgb(255, 255, 255);
+  /* Example text color */
+  font-weight: bold;
+}
+
+.bg-accent {
+  background-color: #e5e7eb;
+  /* Example accent color */
+}
+
+.text-accent-foreground {
+  color: #374151;
+  /* Example accent text color */
+  font-weight: bold;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+/* Reservation list style */
+
+.reservation-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Text color */
+
+.nav-manager {
+  color: #7f7f7f;
+  font-weight: bold;
+}
+
+.active {
+  color: #FF5959;
+}
+
+/* Font Family */
+
+.bebas {
+  font-family: 'Bebas Neue', cursive;
+}
+
+/* Styles des tables pour plan de table */
+
+.table-container {
+  /* width: 85px; */
+  height: 60px;
+  position: relative;
+  display: inline-block;
+  margin: 7px;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Positionner au-dessus de la table */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.table-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.table-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.number-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #fff;
+  /* Optional: adds a border to the circle */
+}
+
+.dark .number-circle {
+  background-color: transparent;
+  color: black;
+  border: 1px solid transparent;
+  /* Optional: adds a border to the circle */
+  font-size: 18px;
+}
+
+.round-table {
+  max-height: 90px;
+  /* Taille maximale pour les tables rondes, plus petites */
+}
+
+.square-table {
+  max-height: 190px;
+  /* Taille maximale pour les tables carrées, plus petites */
+}
+
+.rectangle-table {
+  max-height: 120px;
+  /* Taille maximale pour les tables rectangulaires */
+}
+
+
+.table-plan-wrapper {
+  overflow-x: auto;
+  /* Activer le défilement horizontal */
+  overflow-y: hidden;
+  /* Désactiver le défilement vertical */
+  scrollbar-width: none;
+  /* Masquer la scrollbar pour Firefox */
+  -ms-overflow-style: none;
+  /* Masquer la scrollbar pour Internet Explorer */
+}
+
+.table-plan-wrapper::-webkit-scrollbar {
+  width: 0;
+  /* Masquer la scrollbar pour Chrome, Safari et Opera */
+  height: 0;
+}
+
+.table-plan-wrapper:hover::-webkit-scrollbar {
+  width: 8px;
+  /* Largeur de la scrollbar lorsqu'on survole la zone */
+  height: 8px;
+}
+
+.table-plan-wrapper::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  /* Couleur de la scrollbar */
+  border-radius: 4px;
+}
+
+.table-plan-wrapper::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  /* Couleur de fond de la scrollbar */
+}
+
+
+/* Version responsive */
+
+@media screen and (max-width: 1400px) {
+
+  .number-circle {
+    font-size: 14px;
+  }
+
+  .rdp-day_button {
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .main-subtitle {
+    font-size: 2.4rem;
+  }
+
+  .btn-green {
+    padding: 15px 10px;
+  }
+
+  .btn-light {
+    padding: 14px 5px;
+  }
+
+  .widget-container {
+    height: 100vh;
+    width: 100%;
+  }
+
+  input::placeholder {
+    font-weight: normal;
+    color: #181717;
+  }
+
+  .calendar {
+    width: 100%;
+    overflow: hidden;
+    /* Pour éviter tout débordement */
+    padding: 0;
+  }
+
+  .rdp-month_caption {
+    font-size: 20px;
+  }
+
+  .rdp-day_button {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .rdp-weekday {
+    padding-top: 10px;
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+
+  .calendar td {
+    margin: 5px;
+  }
+
+}

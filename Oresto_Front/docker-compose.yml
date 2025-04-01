@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  oresto-front:
+    container_name: oresto_front
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production # ← si tu ajoutes un stage 'production' dans le Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.oresto-front.rule=Host(`oresto.local`)"
+      - "traefik.http.routers.oresto-front.entrypoints=websecure"
+      - "traefik.http.routers.oresto-front.tls=true"
+      - "traefik.http.routers.oresto-front.tls.certresolver=letsencrypt"
+      - "traefik.http.services.oresto-front.loadbalancer.server.port=3000"
+    networks:
+      - traefik
+    expose:
+      - "3000" # ← Pour Traefik uniquement
+
+networks:
+  traefik:
+    external: true
