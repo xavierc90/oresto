@@ -7,11 +7,11 @@ entryPoints:
   websecure:
     address: ":443"
   traefik:
-    address: ":8080" # 👈 Ajoute ce port pour le dashboard
+    address: ":8080"
 
 api:
   dashboard: true
-  insecure: true # 👈 Pour accéder via http://localhost:8080 (dev uniquement !)
+  insecure: true # À désactiver en prod si tu veux uniquement https
 
 providers:
   docker:

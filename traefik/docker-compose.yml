@@ -10,23 +10,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080" # Traefik dashboard
+      - "8080:8080" # Pour accéder au dashboard Traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik.yml:/etc/traefik/traefik.yml:ro
       - ./dynamic.yml:/etc/traefik/dynamic.yml:ro
       - ./acme.json:/etc/traefik/acme.json
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.entrypoints=web"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.oresto.io`)"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.traefik.middlewares=https-redirect"
-      - "traefik.http.routers.traefik-secure.entrypoints=websecure"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.oresto.io`)"
-      - "traefik.http.routers.traefik-secure.tls=true"
-      - "traefik.http.routers.traefik-secure.service=api@internal"
-      - "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
+      - "traefik.enable=true" # Activation du conteneur, le reste est géré dans dynamic.yml
 
 networks:
   default:
