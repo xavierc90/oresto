@@ -1,0 +1,28 @@
+log:
+  level: DEBUG
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+  traefik:
+    address: ":8080" # 👈 Ajoute ce port pour le dashboard
+
+api:
+  dashboard: true
+  insecure: true # 👈 Pour accéder via http://localhost:8080 (dev uniquement !)
+
+providers:
+  docker:
+    exposedByDefault: false
+  file:
+    filename: /etc/traefik/dynamic.yml
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: contact@oresto.io
+      storage: /etc/traefik/acme.json
+      httpChallenge:
+        entryPoint: web
