@@ -12,10 +12,7 @@ const logDebug = (message: string, data?: unknown) => {
   }
 };
 
-const API_URL = import.meta.env.DEV
-  ? "http://localhost:8080"
-  : import.meta.env.VITE_API_URL ||
-    "https://orestoback-production.up.railway.app";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
 logDebug("URL de l'API configurée:", API_URL);
 
