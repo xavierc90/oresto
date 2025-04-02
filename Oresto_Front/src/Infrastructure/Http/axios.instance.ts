@@ -24,6 +24,7 @@ export const http = axios.create({
   withCredentials: true,
 });
 
+
 // Intercepteur pour gérer les erreurs d'authentification
 http.interceptors.response.use(
   (response) => {
