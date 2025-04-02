@@ -64,7 +64,7 @@ export const LoginFormUser: React.FC<LoginFormUserProps> = ({
         <CloseButton onClick={handleClose} />
       </div>
       <img
-        src="../../../public/img/logo-oresto-orange.png"
+        src="./img/logo-oresto-orange.png"
         width="230px"
         alt="Logo Oresto"
       />

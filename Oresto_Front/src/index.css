@@ -182,7 +182,7 @@ thead th {
 }
 
 .cover-contact {
-  background-image: url('../public/img/cover-contact.png');
+  background-image: url('./img/cover-contact.png');
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -12,7 +12,7 @@ const logDebug = (message: string, data?: unknown) => {
   }
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const API_URL = import.meta.env.VITE_API_URL;
 
 logDebug("URL de l'API configurée:", API_URL);
 

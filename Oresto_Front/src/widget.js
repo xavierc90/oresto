@@ -18,7 +18,7 @@
     }
 
     // Utiliser l'URL de l'API de l'environnement de production
-    const apiUrl = "https://orestoback-production.up.railway.app";
+    const apiUrl = "http://localhost:3001";
     console.log("URL de l'API utilisée:", apiUrl);
 
     // URL complète de l'endpoint

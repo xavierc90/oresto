@@ -55,11 +55,10 @@ export const HomePage = () => {
             </a>
           </div>
           <ul
-            className={`fixed z-50 top-0 mt-5 right-0 w-full h-full flex flex-col justify-center items-center text-2xl font-bold bg-black text-white lg:static lg:mt-0 lg:flex-row lg:bg-transparent lg:justify-center lg:text-sm transition-transform duration-300 ${
-              isMenuVisible
+            className={`fixed z-50 top-0 mt-5 right-0 w-full h-full flex flex-col justify-center items-center text-2xl font-bold bg-black text-white lg:static lg:mt-0 lg:flex-row lg:bg-transparent lg:justify-center lg:text-sm transition-transform duration-300 ${isMenuVisible
                 ? "translate-x-0"
                 : "translate-x-full lg:translate-x-0 translate-none"
-            }`}
+              }`}
           >
             <li>
               <h1 className="pb-6 uppercase drop-shadow-xl lg:hidden">
@@ -194,7 +193,7 @@ export const HomePage = () => {
           </div>
           <div className="md:w-1/2 mt-8 md:mt-0 md:pl-8">
             <img
-              src="../../../public/img/cover-about.jpg"
+              src="../.././img/cover-about.jpg"
               alt="Image du restaurant"
               className="w-full rounded-lg shadow-lg"
             />
@@ -212,7 +211,7 @@ export const HomePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
           <div className="rounded-lg shadow-lg bg-white">
             <img
-              src="../../../public/img/entree.jpg"
+              src="../.././img/entree.jpg"
               alt="Entrées"
               className="w-full h-90 object-cover rounded-t-lg mb-4"
             />
@@ -221,7 +220,7 @@ export const HomePage = () => {
 
           <div className="bg-white rounded-lg shadow-lg">
             <img
-              src="../../../public/img/plats.jpg"
+              src="../.././img/plats.jpg"
               alt="Plats"
               className="w-full h-50 object-cover rounded-t-lg mb-4"
             />
@@ -230,7 +229,7 @@ export const HomePage = () => {
 
           <div className="bg-white rounded-lg shadow-lg">
             <img
-              src="../../../public/img/dessert.jpg"
+              src="../.././img/dessert.jpg"
               alt="Desserts"
               className="w-full h-[295px] object-cover rounded-t-lg mb-4"
             />
@@ -239,7 +238,7 @@ export const HomePage = () => {
 
           <div className="bg-white rounded-lg shadow-lg">
             <img
-              src="../../../public/img/boisson.jpg"
+              src="../.././img/boisson.jpg"
               alt="Boissons"
               className="w-full h-[300px] object-cover rounded-t-lg mb-4"
             />
