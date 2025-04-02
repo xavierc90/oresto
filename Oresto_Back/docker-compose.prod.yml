@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  api-oresto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: api-oresto
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mongodb://mongodb:27017/oresto_prod
+      - PORT=8080
+      - SECRET_KEY=${SECRET_KEY}
+      - SECRET_COOKIE=${SECRET_COOKIE}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api-oresto.rule=Host(`api.oresto.io`)"
+      - "traefik.http.routers.api-oresto.entrypoints=websecure"
+      - "traefik.http.routers.api-oresto.tls=true"
+      - "traefik.http.routers.api-oresto.tls.certresolver=myresolver"
+      - "traefik.http.services.api-oresto.loadbalancer.server.port=8080"
+    networks:
+      - oresto-network
+      - traefik
+    depends_on:
+      - mongodb
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-oresto
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - oresto-network
+
+networks:
+  oresto-network:
+    external: true
+
+  traefik:
+    external: true

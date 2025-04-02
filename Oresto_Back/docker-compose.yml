@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  api-oresto:
+    platform: ${DOCKER_PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: api-oresto
+    volumes:
+      - .:/api
+    environment:
+      - NODE_ENV=development
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - SECRET_COOKIE=${SECRET_COOKIE}
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - oresto-network
+    depends_on:
+      - mongodb-oresto
+    restart: always
+
+  mongodb-oresto:
+    image: mongo:latest
+    container_name: mongodb-oresto
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - oresto-network
+    ports:
+      - ${PORT_BDD}:${PORT_BDD}
+    expose:
+      - ${PORT_BDD}
+
+networks:
+  oresto-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
