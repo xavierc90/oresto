@@ -1,6 +1,5 @@
 # Étape 1 : Dépendances
-ARG NODE_VERSION=20.15.0-alpine
-FROM node:${NODE_VERSION} AS deps
+FROM node:20.15.0-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -8,10 +7,7 @@ RUN npm ci
 # Étape 2 : Développement
 FROM deps AS development
 COPY . .
-COPY scripts/install-docker.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-docker.sh
 EXPOSE 3000
-ENTRYPOINT ["install-docker.sh"]
 CMD ["npm", "run", "dev"]
 
 # Étape 3 : Build (pour la prod)

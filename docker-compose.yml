@@ -1,0 +1,52 @@
+version: "3.8"
+
+networks:
+  projects:
+    external: true
+
+services:
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb-oresto
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - projects
+
+  api:
+    build:
+      context: ./Oresto_Back
+      dockerfile: Dockerfile
+    container_name: api-oresto
+    restart: unless-stopped
+    env_file:
+      - ./Oresto_Back/.env.production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`api.oresto.io`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=letsencrypt"
+    networks:
+      - projects
+    depends_on:
+      - mongodb
+
+  front:
+    build:
+      context: ./Oresto_Front
+      dockerfile: Dockerfile
+      target: production
+    container_name: front-oresto
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.front.rule=Host(`oresto.io`, `www.oresto.io`)"
+      - "traefik.http.routers.front.entrypoints=websecure"
+      - "traefik.http.routers.front.tls.certresolver=letsencrypt"
+    networks:
+      - projects
+
+volumes:
+  mongo-data:

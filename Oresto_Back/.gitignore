@@ -1,0 +1,77 @@
+# Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# MongoDB local data (Docker volumes)
+mongo-data/
+mongo-data-test/
+
+# IDE & OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime & temp
+pids
+*.pid
+*.seed
+*.pid.lock
+.node_repl_history
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+node_modules/
+bower_components/
+jspm_packages/
+web_modules/
+
+# Build & Coverage
+dist/
+build/
+coverage/
+*.lcov
+.nyc_output
+
+# Cache & temp
+.cache/
+.parcel-cache/
+.temp/
+.npm/
+.eslintcache
+.stylelintcache
+
+# Compiled binary addons
+build/Release
+.lock-wscript
+
+# Output from tools
+*.tgz
+.rpt2_cache/
+.rts2_cache_*/
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Reports
+report.*.json
+
+# Serverless / cloud tools
+.serverless/
+.dynamodb/
+.tern-port
+
+# Test-related
+logs/*
+!logs/.gitkeep

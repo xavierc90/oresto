@@ -46,16 +46,10 @@ process.on("unhandledRejection", (reason, promise) => {
 // Ajout des headers pour les requêtes (CORS)
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://localhost:3001",
-  "https://oresto-front.vercel.app",
-  "https://oresto-front-a90lkbkdg-xavierc90s-projects.vercel.app",
-  "https://www.oresto.io",
+  "http://oresto.local",
+  "http://localhost:8080",
   "https://oresto.io",
-  "https://oresto-front.vercel.app",
-  "https://oresto-front-git-main-xavierc90s-projects.vercel.app",
-  "https://oresto-front-git-hugo-xavierc90s-projects.vercel.app",
-  "https://oresto-front-rouge.vercel.app",
-  // Ajouter d'autres origines au besoin
+  "https://www.oresto.io"
 ];
 
 app.use(
