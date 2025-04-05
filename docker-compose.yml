@@ -45,7 +45,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=projects"
-      - "traefik.http.routers.front.rule=Host(`oresto.io`)"
+      - "traefik.http.routers.front.rule=Host(`oresto.io`) || Host(`www.oresto.io`)"
       - "traefik.http.routers.front.entrypoints=websecure"
       - "traefik.http.routers.front.tls.certresolver=letsencrypt"
       - "traefik.http.services.front.loadbalancer.server.port=3000"
