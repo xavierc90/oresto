@@ -25,6 +25,7 @@ services:
       - ./Oresto_Back/.env.production
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=projects"
       - "traefik.http.routers.api.rule=Host(`api.oresto.io`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls.certresolver=letsencrypt"
@@ -43,6 +44,7 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=projects"
       - "traefik.http.routers.front.rule=Host(`oresto.io`, `www.oresto.io`)"
       - "traefik.http.routers.front.entrypoints=websecure"
       - "traefik.http.routers.front.tls.certresolver=letsencrypt"
