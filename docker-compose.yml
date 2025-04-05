@@ -28,6 +28,7 @@ services:
       - "traefik.http.routers.api.rule=Host(`api.oresto.io`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.api.loadbalancer.server.port=3001"
     networks:
       - projects
     depends_on:
@@ -45,6 +46,7 @@ services:
       - "traefik.http.routers.front.rule=Host(`oresto.io`, `www.oresto.io`)"
       - "traefik.http.routers.front.entrypoints=websecure"
       - "traefik.http.routers.front.tls.certresolver=letsencrypt"
+      - "traefik.http.services.front.loadbalancer.server.port=3000"
     networks:
       - projects
 
