@@ -5,6 +5,7 @@ networks:
     external: true
 
 services:
+
   mongodb:
     image: mongo:7.0
     container_name: mongodb-oresto
@@ -25,12 +26,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=projects"
-
-      # -- Router explicite pour l’API --
-      - "traefik.http.routers.api-oresto.rule=Host(`api.oresto.io`)"
-      - "traefik.http.routers.api-oresto.entrypoints=websecure"
-      - "traefik.http.routers.api-oresto.tls.certresolver=letsencrypt"
-      - "traefik.http.services.api-oresto.loadbalancer.server.port=3001"
+      - "traefik.http.routers.api.rule=Host(`api.oresto.io`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.api.loadbalancer.server.port=3001"
     networks:
       - projects
     depends_on:
@@ -46,12 +45,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=projects"
-
-      # -- Router explicite pour le FRONT --
-      - "traefik.http.routers.front-oresto.rule=Host(`oresto.io`) || Host(`www.oresto.io`)"
-      - "traefik.http.routers.front-oresto.entrypoints=websecure"
-      - "traefik.http.routers.front-oresto.tls.certresolver=letsencrypt"
-      - "traefik.http.services.front-oresto.loadbalancer.server.port=3000"
+      - "traefik.http.routers.front.rule=Host(`oresto.io`) || Host(`www.oresto.io`)"
+      - "traefik.http.routers.front.entrypoints=websecure"
+      - "traefik.http.routers.front.tls.certresolver=letsencrypt"
+      - "traefik.http.services.front.loadbalancer.server.port=3000"
     networks:
       - projects
 
