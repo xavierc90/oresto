@@ -20,5 +20,5 @@ CMD ["npm", "test"]
 FROM base AS production
 COPY . .
 ENV NODE_ENV=production
-EXPOSE 8080
+EXPOSE 3001
 CMD ["node", "server.js"]
